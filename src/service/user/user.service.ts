@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
   CreateUserDto,
-  LoginUserDto,
 } from '../../common/model/user/request-dto';
 import { UserRepository } from '../../repository/user/user.repository';
 import { v4 } from 'uuid';
@@ -17,10 +16,7 @@ export class UserService {
   ) {}
 
   async findOne(name: string): Promise<UserEntity> {
-    return await this.userRepository.findOne(
-      { name },
-      { relations: ['roles'] },
-    );
+    return this.userRepository.findOne({ name }, { relations: ['role'] });
   }
 
   async checkUsername(name: string): Promise<UserEntity> {
@@ -32,12 +28,13 @@ export class UserService {
     const newUser = {
       ...createUserDto,
       pass: await bcrypt.hash(createUserDto.pass, 12),
-      roles: [{ id: role.id }],
+      roles: [{ role: role.role }],
       confirm: true,
       confirmKey: v4(),
     };
-    return await this.userRepository.save(newUser);
+    return this.userRepository.save(newUser);
   }
+
   async getUser(id: number) {
     return this.userRepository.findOne(id, { relations: ['roles'] });
   }

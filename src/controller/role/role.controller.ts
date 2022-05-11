@@ -26,7 +26,7 @@ export class RoleController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiBadRequestResponse({ description: 'Something wrong' })
   @Post('/create')
-  @Roles('admin')
+  //@Roles('admin')
   @UseGuards(AuthenticatedGuard, RolesGuard)
   async createRole(@Body() createRoleDTO: CreateRoleDto) {
     return this.roleService.createRole(createRoleDTO);

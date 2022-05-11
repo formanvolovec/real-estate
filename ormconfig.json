@@ -2,10 +2,10 @@
    "type": "postgres",
    "host": "localhost",
    "port": 5432,
-   "username": "eugene",
-   "password": "4y7sV96vA9wv46VR",
-   "database": "flat_rent",
-   "synchronize": true,
+   "username": "postgres",
+   "password": "postgres",
+   "database": "postgres",
+   "synchronize": false,
    "logging": false,
    "entities": [
       "src/common/**/*entity*.ts"

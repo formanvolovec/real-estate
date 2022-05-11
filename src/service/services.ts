@@ -5,6 +5,7 @@ import { DistrticService } from './district/distrtic.service';
 import { RoleService } from './role/role.service';
 import { TagsService } from './tags/tags.service';
 import { UserService } from './user/user.service';
+import { FilesService } from '../file/file.service';
 
 export const SERVICES = [
   ApartmentService,
@@ -14,4 +15,5 @@ export const SERVICES = [
   RoleService,
   TagsService,
   UserService,
+  FilesService,
 ];

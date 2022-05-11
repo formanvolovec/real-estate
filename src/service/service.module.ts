@@ -5,7 +5,7 @@ import { SERVICES } from './services';
 import { REPOSITORY } from '../repository/repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([...REPOSITORY, ...ENTITIES])],
+  imports: [TypeOrmModule.forFeature([...ENTITIES, ...REPOSITORY])],
   providers: [...SERVICES],
   exports: [...SERVICES],
 })
