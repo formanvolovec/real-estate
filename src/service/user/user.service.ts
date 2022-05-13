@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {
   CreateUserDto,
-} from '../../common/model/user/request-dto';
+} from '../../common/model/user/request.dto';
 import { UserRepository } from '../../repository/user/user.repository';
 import { v4 } from 'uuid';
 import { RoleRepository } from '../../repository/role/role.repository';

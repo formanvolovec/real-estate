@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsString } from 'class-validator';
+import { IsArray, IsNumber, IsString } from "class-validator";
 
 export class CreateApartmentDto {
   @ApiProperty()
@@ -49,4 +49,8 @@ export class CreateApartmentDto {
   @ApiProperty()
   @IsString()
   appliances: string;
+
+  @ApiProperty()
+  @IsArray()
+  tags: number[];
 }

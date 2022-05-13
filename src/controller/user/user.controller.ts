@@ -20,7 +20,7 @@ import { UserService } from '../../service/user/user.service';
 import {
   CreateUserDto,
   LoginUserDto,
-} from '../../common/model/user/request-dto';
+} from '../../common/model/user/request.dto';
 import { AuthService } from '../../common/auth/auth.service';
 import { JwtAuthGuard } from '../../common/auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/auth/guards/roles.guard';

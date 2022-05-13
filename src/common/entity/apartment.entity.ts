@@ -3,8 +3,9 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { TagsEntity } from './tags.entity';
@@ -62,10 +63,13 @@ export class ApartmentEntity {
   districtOfTheCity: DistrictEntity;
 
   @ApiProperty({ type: [TagsEntity] })
-  @OneToMany(() => TagsEntity, (tag) => tag.realEstate, { nullable: true })
+  @ManyToMany(() => TagsEntity, (tag) => tag.apartment, {
+    nullable: true,
+    cascade: true,
+  })
+  @JoinTable()
   tags: TagsEntity[];
 
-  @ApiProperty()
   @ManyToOne(() => UserEntity, (user) => user.id)
   owner: UserEntity;
 }

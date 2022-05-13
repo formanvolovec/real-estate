@@ -9,7 +9,7 @@ import { Body, Controller, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import {
   addingRoleDto,
   CreateRoleDto,
-} from '../../common/model/role/request-dto';
+} from '../../common/model/role/request.dto';
 import { RoleService } from '../../service/role/role.service';
 import { AuthenticatedGuard } from '../../common/auth/guards/authenticated.guard';
 import { RolesGuard } from '../../common/auth/guards/roles.guard';

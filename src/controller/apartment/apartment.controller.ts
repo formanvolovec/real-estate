@@ -15,7 +15,7 @@ import {
   Param,
   Patch,
   Post,
-  UploadedFiles,
+  UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { CreateApartmentDto } from '../../common/model/apartment/create.apartment.dto';
@@ -34,12 +34,9 @@ export class ApartmentController {
   @ApiBadRequestResponse({ description: 'Something wrong' })
   @ApiBody({ type: CreateApartmentDto })
   @Post('/add')
-  @UseInterceptors(FileInterceptor('photo'))
-  create(
-    @UploadedFiles() files,
-    @Body() createApartmentDTO: CreateApartmentDto,
-  ) {
-    return this.apartmentService.create(createApartmentDTO, files.buffer);
+  @UseInterceptors(FileInterceptor('photo', { dest: './uploads' }))
+  create(@UploadedFile() file, @Body() createApartmentDTO: CreateApartmentDto) {
+    return this.apartmentService.create(createApartmentDTO, file);
   }
 
   @ApiOperation({ summary: 'Update apartment' })

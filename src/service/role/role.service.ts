@@ -3,7 +3,7 @@ import { RoleRepository } from '../../repository/role/role.repository';
 import {
   addingRoleDto,
   CreateRoleDto,
-} from '../../common/model/role/request-dto';
+} from '../../common/model/role/request.dto';
 import { UserRepository } from '../../repository/user/user.repository';
 
 @Injectable()

@@ -1,13 +1,17 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { ApartmentEntity } from './apartment.entity';
 
 @Entity({ name: 'tags' })
 export class TagsEntity {
   @ApiProperty()
-  @PrimaryGeneratedColumn({
-    type: 'int',
-  })
+  @PrimaryGeneratedColumn()
   id: number;
 
   @ApiProperty()
@@ -15,8 +19,8 @@ export class TagsEntity {
   tag: string;
 
   @ApiProperty({ type: () => ApartmentEntity })
-  @ManyToOne(() => ApartmentEntity, (realEstate) => realEstate, {
+  @ManyToMany(() => ApartmentEntity, (apartment) => apartment, {
     nullable: true,
   })
-  realEstate: ApartmentEntity[];
+  apartment: ApartmentEntity[];
 }
